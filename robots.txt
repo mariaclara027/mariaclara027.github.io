@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Páginas que só servem para gerar as imagens — não precisam ir para o Google
+Disallow: /og-image.html
+Disallow: /icon.html
+
+Sitemap: https://mariaclara027.github.io/sitemap.xml

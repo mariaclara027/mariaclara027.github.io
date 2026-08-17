@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Gerador da imagem de compartilhamento (1200x630)</title>
+<!--
+  ============================================================
+  FONTE DA IMAGEM DE COMPARTILHAMENTO — img/og-cover.png
+  ------------------------------------------------------------
+  Esta página existe só para gerar a arte que aparece no
+  WhatsApp / Facebook / Instagram quando o link é enviado.
+
+  Para regerar depois de editar:
+  1) abra este arquivo no Chrome;
+  2) tire um print de 1200x630 (DevTools > Ctrl+Shift+P >
+     "Capture screenshot" com a tela em 1200x630);
+  3) salve como img/og-cover.png.
+
+  A foto do card é a mesma do hero: img/enfermeira.png.
+  Trocou a foto? É só regerar o print seguindo os passos acima.
+  ============================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal-700:#0B6E6A;
+  --teal-600:#0F8A85;
+  --teal-500:#14A39B;
+  --teal-300:#7FD1CA;
+  --teal-100:#D6F1EE;
+  --mint-50:#F1FAF8;
+  --ink:#12262C;
+  --ink-2:#2E4750;
+  --slate:#5F737A;
+  --coral:#FF6B85;
+  --wa:#25D366;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{
+  font-family:'Nunito Sans',system-ui,sans-serif;
+  background:#0B6E6A;
+  color:#fff;
+  position:relative;
+}
+
+/* ---------- Fundo ---------- */
+.bg{position:absolute;inset:0;background:linear-gradient(125deg,#075B58 0%,#0B6E6A 38%,#0F8A85 72%,#14A39B 100%)}
+.bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(680px 480px at 88% -8%, rgba(127,209,202,.42), transparent 62%),
+    radial-gradient(520px 420px at 2% 108%, rgba(20,163,155,.5), transparent 60%);
+}
+.grid{
+  position:absolute;inset:0;opacity:.16;
+  background-image:
+    linear-gradient(rgba(255,255,255,.55) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(255,255,255,.55) 1.5px, transparent 1.5px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(760px 520px at 74% 34%, #000 12%, transparent 74%);
+          mask-image:radial-gradient(760px 520px at 74% 34%, #000 12%, transparent 74%);
+}
+.glow{
+  position:absolute;width:520px;height:520px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.16);
+  right:-150px;top:-190px;
+}
+.glow2{
+  position:absolute;width:760px;height:760px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.1);
+  right:-260px;top:-300px;
+}
+
+/* ---------- Layout ---------- */
+.wrap{position:relative;height:100%;display:grid;grid-template-columns:1fr 384px;gap:40px;padding:50px 50px 46px}
+
+/* ---------- Coluna esquerda ---------- */
+.left{display:flex;flex-direction:column;height:100%}
+.brand{display:flex;align-items:center;gap:14px;margin-bottom:30px}
+.brand__mark{
+  width:52px;height:52px;border-radius:16px;flex:none;
+  background:#fff;color:var(--teal-600);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 14px 28px -14px rgba(0,0,0,.5);
+}
+.brand__mark svg{width:28px;height:28px;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;fill:none}
+.brand__txt{font-family:'Outfit',sans-serif;font-weight:700;font-size:24px;line-height:1.15;letter-spacing:-.01em}
+.brand__txt small{display:block;font-family:'Nunito Sans',sans-serif;font-weight:600;font-size:14.5px;letter-spacing:.02em;color:rgba(255,255,255,.72)}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:11px;align-self:flex-start;
+  padding:9px 16px 9px 13px;border-radius:999px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+  font-weight:800;font-size:13.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:#fff;margin-bottom:20px;
+}
+.eyebrow i{width:22px;height:4px;border-radius:3px;background:var(--coral);display:block}
+
+h1{
+  font-family:'Outfit',sans-serif;font-weight:800;
+  font-size:57px;line-height:1.06;letter-spacing:-.028em;
+  margin-bottom:20px;text-wrap:balance;
+}
+h1 em{font-style:normal;color:#C9F3EE}
+
+.sub{font-size:20.5px;line-height:1.45;color:rgba(255,255,255,.86);font-weight:600;max-width:26ch}
+
+.proof{list-style:none;display:flex;flex-wrap:wrap;gap:9px;margin-top:auto;margin-bottom:22px}
+.proof li{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 15px;border-radius:999px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+  font-size:15px;font-weight:700;color:#EAFBF8;
+}
+.proof svg{width:16px;height:16px;stroke:#7FD1CA;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;fill:none;flex:none}
+
+.cta{display:flex;align-items:center;gap:16px}
+.cta__pill{
+  display:inline-flex;align-items:center;gap:12px;
+  background:#fff;color:#0B6E6A;border-radius:999px;
+  padding:14px 26px 14px 18px;
+  box-shadow:0 20px 40px -20px rgba(0,0,0,.6);
+}
+.cta__pill .wa{width:38px;height:38px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;flex:none}
+.cta__pill .wa svg{width:22px;height:22px;fill:#fff}
+.cta__pill b{font-family:'Outfit',sans-serif;font-size:25px;font-weight:800;letter-spacing:-.01em;line-height:1.1;display:block}
+.cta__pill span{display:block;font-size:12.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-600)}
+.cta__site{font-size:16px;font-weight:700;color:rgba(255,255,255,.78);line-height:1.35}
+.cta__site b{display:block;color:#fff;font-size:16.5px}
+
+/* ---------- Coluna direita (foto) ---------- */
+.right{position:relative;display:flex}
+.shot{
+  position:relative;width:100%;border-radius:30px;overflow:hidden;
+  border:3px solid rgba(255,255,255,.34);
+  box-shadow:0 44px 80px -34px rgba(0,0,0,.7), 0 0 0 1px rgba(0,0,0,.06);
+  /* fundo do painel: aparece se a foto for PNG sem fundo */
+  background:linear-gradient(165deg,#12968F 0%,#0B6E6A 55%,#075B58 100%);
+}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.shot::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,
+    rgba(7,91,88,.22) 0%, rgba(7,91,88,0) 24%,
+    rgba(7,91,88,0) 48%, rgba(7,91,88,.86) 100%);
+}
+
+.avail{
+  position:absolute;top:18px;right:18px;z-index:2;
+  display:inline-flex;align-items:center;gap:9px;
+  background:#fff;color:var(--ink);border-radius:999px;padding:10px 17px;
+  font-weight:800;font-size:14.5px;
+  box-shadow:0 16px 30px -16px rgba(0,0,0,.6);
+}
+.avail i{width:10px;height:10px;border-radius:50%;background:var(--wa);box-shadow:0 0 0 4px rgba(37,211,102,.22);display:block}
+
+.plate{
+  position:absolute;left:16px;right:16px;bottom:16px;z-index:2;
+  display:flex;align-items:center;gap:12px;
+  background:rgba(255,255,255,.17);
+  border:1px solid rgba(255,255,255,.3);
+  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+  border-radius:19px;padding:13px 16px;
+}
+.plate svg{width:22px;height:22px;stroke:#D9F7F3;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;fill:none;flex:none}
+.plate b{display:block;font-size:15.5px;font-weight:800;color:#fff;line-height:1.25}
+.plate span{display:block;font-size:13.5px;font-weight:600;color:rgba(255,255,255,.82)}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="grid"></div>
+<div class="glow"></div>
+<div class="glow2"></div>
+
+<div class="wrap">
+  <div class="left">
+    <div class="brand">
+      <span class="brand__mark"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+      <span class="brand__txt">Enf. Maria Clara<small>Enfermagem domiciliar</small></span>
+    </div>
+
+    <span class="eyebrow"><i></i>Várzea Grande e Cuiabá</span>
+
+    <h1>Cuidado de enfermagem <em>no conforto da sua casa.</em></h1>
+    <p class="sub">Curativos, medicação, sinais vitais e cuidados paliativos — sem fila e sem deslocamento.</p>
+
+    <ul class="proof">
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Bacharel em Enfermagem</li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Hospital de Câncer-MT</li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Pós em Oncologia</li>
+    </ul>
+
+    <div class="cta">
+      <span class="cta__pill">
+        <span class="wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></span>
+        <span><span>Agende pelo WhatsApp</span><b>(65) 98105-4265</b></span>
+      </span>
+      <span class="cta__site">mariaclara027.github.io<b>Seg a sáb · plantões sob agenda</b></span>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="shot">
+      <img src="img/enfermeira.png" alt=""
+           onerror="this.onerror=null;this.src='img/enfermeira-original.png'">
+      <span class="avail"><i></i>Disponível hoje</span>
+      <div class="plate">
+        <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span><b>Atendimento em casa</b><span>Várzea Grande e Cuiabá · MT</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
