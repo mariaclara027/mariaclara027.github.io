@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enf. Ana Ribeiro — Enfermagem domiciliar na Grande Florianópolis</title>
+<meta name="description" content="Curativos, medicação, pós-operatório e cuidados com idosos no conforto da sua casa. Enfermeira registrada no COREN. Agende pelo WhatsApp.">
+<meta name="theme-color" content="#14A39B">
+<!--
+  ============================================================
+  TEMPLATE — Landing page para enfermeira (atendimento domiciliar)
+  ------------------------------------------------------------
+  Onde editar:
+  1) CONFIG (fim do arquivo): número do WhatsApp e nome — os botões
+     e o formulário usam esse número automaticamente.
+  2) Fotos: coloque img/enfermeira.png (hero, PNG sem fundo, ~900x1100)
+     e img/sobre.jpg (seção Sobre). Enquanto não existirem, aparece
+     uma silhueta ilustrativa no lugar.
+  3) Cores: variáveis em :root (--teal-500 é a cor principal).
+  4) Textos: procure por "EDITE" nos comentários.
+  ============================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ---------- Tokens ---------- */
+:root{
+  --teal-700:#0B6E6A;
+  --teal-600:#0F8A85;
+  --teal-500:#14A39B;
+  --teal-300:#7FD1CA;
+  --teal-100:#D6F1EE;
+  --mint-50:#F1FAF8;
+  --ink:#12262C;
+  --ink-2:#2E4750;
+  --slate:#5F737A;
+  --line:#DCE9E7;
+  --white:#FFFFFF;
+  --coral:#FF6B85;
+  --wa:#25D366;
+  --wa-dark:#1DA851;
+  --font-display:'Outfit',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-body:'Nunito Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --radius:20px;
+  --shadow-sm:0 1px 2px rgba(18,38,44,.05),0 10px 30px -14px rgba(18,38,44,.14);
+  --shadow-md:0 30px 60px -30px rgba(11,110,106,.35);
+  --container:1160px;
+  --header-h:76px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font-body);
+  font-size:1.0625rem;
+  line-height:1.65;
+  color:var(--ink-2);
+  background:var(--white);
+  overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--teal-300);outline-offset:3px;border-radius:6px}
+::selection{background:var(--teal-100);color:var(--teal-700)}
+
+.container{width:min(var(--container),calc(100% - 48px));margin-inline:auto}
+.ic{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ic--fill{fill:currentColor;stroke:none}
+
+/* ---------- Type ---------- */
+h1,h2,h3,.display{font-family:var(--font-display);color:var(--ink);letter-spacing:-.02em;line-height:1.1;font-weight:700}
+h1{font-size:clamp(2.35rem,4.8vw,3.75rem)}
+h2{font-size:clamp(1.85rem,3.1vw,2.6rem)}
+h3{font-size:1.2rem;letter-spacing:-.01em;line-height:1.3}
+.accent{color:var(--teal-500)}
+.lead{font-size:1.125rem;color:var(--slate);max-width:56ch}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--teal-600);margin-bottom:14px;
+}
+.eyebrow::before{content:"";width:22px;height:3px;border-radius:2px;background:var(--coral)}
+.section-head{max-width:640px;margin-bottom:48px}
+.section-head--center{margin-inline:auto;text-align:center}
+.section-head--center .eyebrow{justify-content:center}
+.section-head--center .lead{margin-inline:auto}
+.section-head h2{margin-bottom:14px}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 24px;border-radius:999px;border:1.5px solid transparent;
+  font-weight:700;font-size:1rem;line-height:1;cursor:pointer;white-space:nowrap;
+  transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease,color .18s ease,border-color .18s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn--primary{background:var(--teal-500);color:#fff;box-shadow:0 12px 26px -12px rgba(20,163,155,.7)}
+.btn--primary:hover{background:var(--teal-600);box-shadow:0 16px 30px -12px rgba(15,138,133,.75)}
+.btn--ghost{background:#fff;color:var(--teal-700);border-color:var(--line)}
+.btn--ghost:hover{border-color:var(--teal-300);background:var(--mint-50)}
+.btn--white{background:#fff;color:var(--teal-700)}
+.btn--white:hover{background:var(--mint-50)}
+.btn--wa{background:var(--wa-dark);color:#fff}
+.btn--wa:hover{background:#178f45}
+.btn--sm{padding:11px 18px;font-size:.95rem}
+.link{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--teal-600)}
+.link .ic{transition:transform .18s ease}
+.link:hover .ic{transform:translateX(3px)}
+
+/* ---------- Header ---------- */
+.header{
+  position:sticky;top:0;z-index:50;height:var(--header-h);
+  background:rgba(255,255,255,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;transition:border-color .2s ease,box-shadow .2s ease;
+}
+.header.scrolled{border-color:var(--line);box-shadow:0 8px 30px -22px rgba(18,38,44,.25)}
+.header .container{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;white-space:nowrap;font-family:var(--font-display);font-weight:600;font-size:1.15rem;color:var(--ink);letter-spacing:-.01em}
+.brand__mark{width:40px;height:40px;border-radius:14px 14px 14px 4px;background:linear-gradient(145deg,var(--teal-500),var(--teal-700));display:grid;place-items:center;color:#fff;box-shadow:0 8px 18px -8px rgba(20,163,155,.8)}
+.brand__mark .ic{width:20px;height:20px;stroke-width:2.6}
+.brand small{display:block;font-family:var(--font-body);font-weight:600;font-size:.72rem;color:var(--slate);letter-spacing:.04em;text-transform:uppercase;line-height:1.1}
+.nav{display:flex;align-items:center;gap:28px}
+.nav .btn{display:none}
+.nav a{font-weight:600;font-size:.98rem;color:var(--ink-2);position:relative;padding:6px 0;white-space:nowrap}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;background:var(--teal-500);transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
+.nav a:hover::after{transform:scaleX(1)}
+.header__cta{display:flex;align-items:center;gap:12px}
+.menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:#fff;place-items:center;cursor:pointer;color:var(--ink)}
+.menu-btn .ic{width:22px;height:22px}
+.menu-btn .ic--x{display:none}
+.header.nav-open .menu-btn .ic--menu{display:none}
+.header.nav-open .menu-btn .ic--x{display:block}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;padding:56px 0 40px}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(60% 55% at 92% 8%,rgba(214,241,238,.95) 0%,rgba(214,241,238,0) 70%),
+    radial-gradient(40% 40% at 5% 95%,rgba(241,250,248,1) 0%,rgba(241,250,248,0) 70%);
+}
+.hero__grid{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center}
+.hero__copy h1{margin:8px 0 22px;max-width:15ch}
+.hero__copy .lead{margin-bottom:32px}
+.hero__actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:34px}
+.proof{display:flex;flex-wrap:wrap;gap:10px 26px;padding:0;list-style:none}
+.proof li{display:flex;align-items:center;gap:8px;font-size:.93rem;font-weight:600;color:var(--ink-2)}
+.proof .ic{color:var(--teal-500);width:1.15em;height:1.15em}
+.hero__visual{position:relative;justify-self:center;width:min(100%,460px)}
+
+/* A moldura em arco: a enfermeira "na porta da sua casa" */
+.frame{
+  position:relative;overflow:hidden;
+  aspect-ratio:4/5;
+  border-radius:50% 50% 36px 36px / 46% 46% 36px 36px;
+  background:linear-gradient(165deg,#E9F8F5 0%,#CBEEE8 55%,#B2E3DC 100%);
+  box-shadow:var(--shadow-md);
+}
+.frame::after{ /* brilho suave */
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(45% 35% at 50% 22%,rgba(255,255,255,.55),rgba(255,255,255,0) 70%);
+  pointer-events:none;z-index:0;
+}
+.frame .ph{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;z-index:1}
+.frame .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;z-index:2}
+.frame .ph-label{
+  position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;
+  display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  padding:8px 14px;border-radius:999px;font-size:.78rem;font-weight:700;color:var(--teal-700);
+  background:rgba(255,255,255,.75);border:1px dashed var(--teal-300);backdrop-filter:blur(6px);
+}
+.frame.has-photo .ph,.frame.has-photo .ph-label{display:none}
+.frame--sm{width:min(100%,380px);margin-inline:auto}
+
+/* Cartões flutuantes sobre a foto */
+.float{
+  position:absolute;z-index:4;background:#fff;border-radius:16px;
+  box-shadow:0 20px 40px -18px rgba(18,38,44,.28),0 0 0 1px rgba(220,233,231,.9);
+}
+.float--avail{top:44px;left:-14px;padding:10px 14px;display:flex;align-items:center;gap:9px;font-size:.88rem;font-weight:700;color:var(--ink)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--wa);box-shadow:0 0 0 0 rgba(37,211,102,.5);animation:pulse 2.4s ease-out infinite}
+.float--rating{top:170px;right:-18px;padding:10px 14px;display:flex;align-items:center;gap:8px;font-size:.88rem;font-weight:700;color:var(--ink)}
+.float--rating .ic{color:#F5B301;width:1.05em;height:1.05em}
+.float--rating small{font-weight:600;color:var(--slate)}
+.float--plan{bottom:52px;left:-40px;width:262px;padding:16px 16px 12px}
+.float--plan header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.float--plan h4{font-family:var(--font-display);font-weight:600;font-size:.95rem;color:var(--ink);letter-spacing:-.01em}
+.float--plan header span{font-size:.72rem;font-weight:700;color:var(--teal-600);background:var(--teal-100);padding:3px 8px;border-radius:999px}
+.float--plan ul{list-style:none}
+.float--plan li{display:flex;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line);font-size:.86rem;color:var(--ink-2)}
+.float--plan li:first-child{border-top:0}
+.float--plan time{font-variant-numeric:tabular-nums;font-weight:700;color:var(--slate);font-size:.8rem;width:38px}
+.float--plan .st{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;flex:none;background:var(--teal-500);color:#fff}
+.float--plan .st .ic{width:12px;height:12px;stroke-width:3}
+.float--plan li.todo .st{background:transparent;border:2px solid var(--teal-300)}
+.float--plan li.todo{color:var(--slate)}
+.float--plan li.todo .st .ic{display:none}
+.float--coren{bottom:88px;right:-22px;padding:12px 16px;display:flex;align-items:center;gap:10px;font-size:.9rem;font-weight:700;color:var(--ink)}
+.float--coren .ic{color:var(--teal-500);width:1.4em;height:1.4em}
+.float--coren small{display:block;font-weight:600;color:var(--slate);font-size:.75rem}
+
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 9px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.float--avail,.float--rating{animation:floaty 6s ease-in-out infinite}
+.float--rating{animation-delay:-2.5s}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.up{animation:up .7s cubic-bezier(.2,.7,.2,1) both}
+.up-2{animation-delay:.08s}.up-3{animation-delay:.16s}.up-4{animation-delay:.24s}.up-5{animation-delay:.32s}.up-6{animation-delay:.2s}
+
+/* ---------- Seções ---------- */
+.section{padding:96px 0}
+.section--tint{background:var(--mint-50)}
+.section--tight{padding:56px 0}
+
+/* Números */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:var(--mint-50);border:1px solid var(--line);border-radius:24px;padding:10px;
+}
+.stat{padding:22px 24px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat strong{display:block;white-space:nowrap;font-family:var(--font-display);font-weight:700;font-size:2rem;letter-spacing:-.02em;color:var(--teal-700);line-height:1;margin-bottom:8px}
+.stat strong .ic{display:inline-block;width:.7em;height:.7em;color:#F5B301;vertical-align:-.02em}
+.stat span{font-size:.93rem;color:var(--slate);font-weight:600}
+
+/* Serviços */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-sm);border-color:var(--teal-300)}
+.card__icon{width:52px;height:52px;border-radius:16px 16px 16px 6px;background:var(--teal-100);color:var(--teal-700);display:grid;place-items:center;margin-bottom:20px}
+.card__icon .ic{width:24px;height:24px}
+.card h3{margin-bottom:10px}
+.card p{color:var(--slate);font-size:.98rem;margin-bottom:18px}
+
+/* Sobre */
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.about__visual{position:relative;width:min(100%,380px);margin-inline:auto}
+.about h2{margin-bottom:16px}
+.about p{color:var(--slate);margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 28px}
+.chip{padding:7px 12px;border-radius:999px;background:var(--teal-100);color:var(--teal-700);font-size:.85rem;font-weight:700}
+.chip--outline{background:#fff;border:1px solid var(--line);color:var(--ink-2)}
+.checklist{list-style:none;display:grid;gap:12px}
+.checklist li{display:flex;gap:12px;align-items:flex-start;color:var(--ink-2)}
+.checklist .st{width:24px;height:24px;border-radius:50%;background:var(--teal-100);color:var(--teal-700);display:grid;place-items:center;flex:none;margin-top:2px}
+.checklist .st .ic{width:13px;height:13px;stroke-width:3}
+
+/* Como funciona */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative}
+.steps::before{content:"";position:absolute;top:26px;left:16.6%;right:16.6%;height:2px;background:linear-gradient(90deg,var(--teal-300),var(--teal-100));border-radius:2px}
+.step{position:relative;padding-top:0}
+.step__num{
+  position:relative;z-index:1;width:52px;height:52px;border-radius:50% 50% 14px 14px;
+  background:#fff;border:2px solid var(--teal-300);color:var(--teal-700);
+  display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:1.15rem;margin-bottom:22px;
+}
+.step:first-child .step__num{background:var(--teal-500);border-color:var(--teal-500);color:#fff}
+.step h3{margin-bottom:8px}
+.step p{color:var(--slate);font-size:.98rem}
+.step small{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:.85rem;font-weight:700;color:var(--teal-600)}
+
+/* Depoimentos */
+.quote{position:relative;display:flex;flex-direction:column;gap:14px;height:100%}
+.quote__mark{font-family:var(--font-display);font-size:3.2rem;line-height:.6;color:var(--teal-300);height:22px}
+.stars{display:flex;gap:2px;color:#F5B301}
+.stars .ic{width:16px;height:16px}
+.quote p{color:var(--ink-2);font-size:1rem;flex:1;margin:0}
+.quote footer{display:flex;align-items:center;gap:12px;padding-top:14px;border-top:1px solid var(--line)}
+.avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(145deg,var(--teal-100),var(--teal-300));color:var(--teal-700);display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:.9rem;flex:none}
+.quote footer b{display:block;color:var(--ink);font-weight:700;font-size:.95rem}
+.quote footer span{font-size:.85rem;color:var(--slate)}
+
+/* FAQ */
+.faq{max-width:780px;margin-inline:auto;display:grid;gap:12px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:0 22px;transition:border-color .2s ease}
+.faq details[open]{border-color:var(--teal-300)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;font-family:var(--font-display);font-weight:600;font-size:1.05rem;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ic{width:26px;height:26px;padding:5px;border-radius:50%;background:var(--teal-100);color:var(--teal-700);transition:transform .25s ease;stroke-width:2.4}
+.faq details[open] summary .ic{transform:rotate(45deg)}
+.faq details p{padding:0 0 20px;color:var(--slate);max-width:64ch}
+
+/* CTA */
+.cta{
+  position:relative;overflow:hidden;text-align:center;color:#fff;
+  padding:72px 32px;border-radius:32px;
+  background:linear-gradient(135deg,var(--teal-500) 0%,var(--teal-700) 100%);
+}
+.cta::before{content:"";position:absolute;width:520px;height:520px;border-radius:50% 50% 60px 60px;background:rgba(255,255,255,.08);left:-160px;top:-260px;transform:rotate(-18deg)}
+.cta::after{content:"";position:absolute;width:420px;height:420px;border-radius:50% 50% 60px 60px;background:rgba(255,255,255,.07);right:-140px;bottom:-260px;transform:rotate(160deg)}
+.cta > *{position:relative;z-index:1}
+.cta h2{color:#fff;margin-bottom:12px}
+.cta p{color:rgba(255,255,255,.88);max-width:52ch;margin:0 auto 28px;font-size:1.1rem}
+.cta .note{margin:22px auto 0;font-size:.9rem;color:rgba(255,255,255,.8)}
+.cta .note .ic{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.18em;margin-right:6px}
+
+/* Contato */
+.contact{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start}
+.contact>*,.grid-3>*,.about>*,.field,.field>*{min-width:0}
+.form{background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px}
+.form h3{font-size:1.35rem;margin-bottom:6px}
+.form > p{color:var(--slate);font-size:.95rem;margin-bottom:22px}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:grid;gap:6px;margin-bottom:14px}
+.field label{font-size:.88rem;font-weight:700;color:var(--ink)}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--mint-50);
+  transition:border-color .18s ease,background-color .18s ease,box-shadow .18s ease;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--teal-500);background:#fff;box-shadow:0 0 0 4px rgba(20,163,155,.15)}
+.field textarea{min-height:110px;resize:vertical}
+.field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235F737A' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+.form .btn{width:100%;margin-top:6px}
+.form__hint{font-size:.82rem;color:var(--slate);margin-top:12px;text-align:center}
+.info{background:var(--mint-50);border:1px solid var(--line);border-radius:24px;padding:32px;display:grid;gap:22px}
+.info h3{font-size:1.35rem}
+.info__item{display:flex;gap:14px;align-items:flex-start}
+.info__item .card__icon{width:44px;height:44px;margin:0;background:#fff;border:1px solid var(--line)}
+.info__item .card__icon .ic{width:20px;height:20px}
+.info__item b{display:block;color:var(--ink);font-size:.95rem}
+.info__item span{color:var(--slate);font-size:.95rem}
+.info__item a{color:var(--teal-700);font-weight:700}
+.info__alert{background:#fff;border:1px dashed var(--coral);border-radius:14px;padding:12px 14px;font-size:.88rem;color:var(--ink-2)}
+.info__alert b{color:var(--coral)}
+
+/* Rodapé */
+.footer{padding:56px 0 32px;border-top:1px solid var(--line);color:var(--slate);font-size:.93rem}
+.footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;margin-bottom:36px}
+.footer p{max-width:40ch;margin-top:14px}
+.footer h4{font-family:var(--font-display);font-weight:600;color:var(--ink);margin-bottom:12px;font-size:1rem}
+.footer ul{list-style:none;display:grid;gap:8px}
+.footer a:hover{color:var(--teal-700)}
+.footer__bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-top:22px;border-top:1px solid var(--line);font-size:.85rem}
+
+/* WhatsApp flutuante */
+.wa-fab{
+  position:fixed;right:20px;bottom:20px;z-index:60;width:58px;height:58px;border-radius:50%;
+  background:var(--wa);color:#fff;display:grid;place-items:center;
+  box-shadow:0 14px 30px -10px rgba(37,211,102,.75);transition:transform .18s ease;
+}
+.wa-fab:hover{transform:scale(1.06)}
+.wa-fab .ic{width:30px;height:30px}
+.wa-fab .badge{position:absolute;top:-2px;right:-2px;width:14px;height:14px;border-radius:50%;background:var(--coral);border:2px solid #fff}
+
+/* Revelar ao rolar */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:.08s}.reveal-d2{transition-delay:.16s}.reveal-d3{transition-delay:.24s}.reveal-d4{transition-delay:.32s}.reveal-d5{transition-delay:.4s}
+
+/* ---------- Responsivo ---------- */
+@media (max-width:1024px){
+  .nav{gap:22px}
+  .hero__grid{gap:40px}
+  .grid-3{gap:16px}
+  .card{padding:24px}
+}
+@media (max-width:900px){
+  .nav,.header__cta .btn{display:none}
+  .menu-btn{display:grid}
+  .header.nav-open .nav{
+    display:flex;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;left:0;right:0;top:var(--header-h);
+    background:#fff;border-bottom:1px solid var(--line);box-shadow:0 30px 40px -30px rgba(18,38,44,.35);
+    padding:10px 24px 18px;
+  }
+  .header.nav-open .nav a{padding:14px 4px;border-bottom:1px solid var(--line);font-size:1.05rem}
+  .header.nav-open .nav a::after{display:none}
+  .header.nav-open .nav .btn{display:inline-flex;margin-top:14px;border-bottom:0;white-space:normal}
+  .hero{padding:32px 0 24px}
+  .hero__grid{grid-template-columns:1fr;gap:44px}
+  .hero__copy h1{max-width:none}
+  .hero__visual{width:min(100%,400px)}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{border-left:0;border-top:1px solid var(--line)}
+  .stat:nth-child(-n+2){border-top:0}
+  .stat:nth-child(2n){border-left:1px solid var(--line)}
+  .grid-3{grid-template-columns:1fr 1fr}
+  .about{grid-template-columns:1fr;gap:44px}
+  .steps{grid-template-columns:1fr;gap:28px}
+  .steps::before{display:none}
+  .step{display:grid;grid-template-columns:52px 1fr;gap:16px}
+  .step__num{margin-bottom:0}
+  .step__body{grid-column:2}
+  .contact{grid-template-columns:1fr}
+  .footer__grid{grid-template-columns:1fr 1fr}
+  .section{padding:72px 0}
+}
+@media (max-width:600px){
+  .container{width:calc(100% - 36px)}
+  body{font-size:1rem}
+  .hero__visual{width:min(100%,340px)}
+  .btn{white-space:normal;text-align:center}
+  .hero__visual{margin-bottom:28px}
+  .float--plan{left:-6px;width:230px;bottom:-22px;padding:14px 14px 8px}
+  .float--plan li{font-size:.82rem;padding:6px 0}
+  .float--plan h4{font-size:.9rem}
+  .float--avail{left:-6px;top:26px}
+  .float--rating{right:-6px;top:104px}
+  .float--coren{right:-4px;bottom:120px}
+  .hero__actions .btn{width:100%}
+  .grid-3{grid-template-columns:1fr}
+  .form__row{grid-template-columns:1fr}
+  .form,.info{padding:24px}
+  .cta{padding:56px 22px;border-radius:24px}
+  .footer__grid{grid-template-columns:1fr}
+  .section{padding:60px 0}
+  .stat strong{font-size:1.6rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .up,.float--avail,.float--rating,.dot{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  .btn:hover,.card:hover{transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Ícones (sprite) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+  <symbol id="i-bandage" viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5" transform="rotate(-45 12 12)"/><path d="M10.5 10.5h.01M13.5 13.5h.01M13.5 10.5h.01M10.5 13.5h.01"/></symbol>
+  <symbol id="i-syringe" viewBox="0 0 24 24"><path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"/><path d="m9 11 4 4"/><path d="m5 19-3 3"/><path d="m14 4 6 6"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.4 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .9-4.5 2.5C10.5 3.9 9.3 3 7.5 3A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.1 3 5.5l7 7z"/></symbol>
+  <symbol id="i-drops" viewBox="0 0 24 24"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
+</svg>
+
+<!-- Silhueta ilustrativa (aparece enquanto não há foto) -->
+<template id="tpl-silhouette">
+  <svg class="ph" viewBox="0 0 460 560" aria-hidden="true">
+    <circle cx="230" cy="215" r="130" fill="#ffffff" opacity=".28"/>
+    <circle cx="288" cy="150" r="24" fill="#0F8A85"/>
+    <path d="M163 216 A76 76 0 1 1 297 216 Z" fill="#0F8A85"/>
+    <rect x="210" y="235" width="40" height="120" rx="14" fill="#A9DED8"/>
+    <circle cx="230" cy="196" r="62" fill="#A9DED8"/>
+    <path d="M70 560 C70 400 140 330 230 330 C320 330 390 400 390 560 Z" fill="#14A39B"/>
+    <path d="M200 332 L230 380 L260 332 Z" fill="#A9DED8"/>
+    <path d="M204 340 C196 390 204 428 230 442 C256 428 264 390 256 340" fill="none" stroke="#0B6E6A" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="230" cy="452" r="14" fill="#0B6E6A"/>
+    <circle cx="230" cy="452" r="6" fill="#DFF3F0"/>
+    <rect x="290" y="420" width="46" height="34" rx="8" fill="#ffffff"/>
+    <path d="M313 428v18M304 437h18" stroke="#14A39B" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+</template>
+
+<!-- ============ CABEÇALHO ============ -->
+<header class="header" id="topo">
+  <div class="container">
+    <a class="brand" href="#topo" aria-label="Início">
+      <span class="brand__mark"><svg class="ic"><use href="#i-plus"/></svg></span>
+      <span>Enf. Ana Ribeiro<small>Enfermagem domiciliar</small></span> <!-- EDITE: nome -->
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#faq">Dúvidas</a>
+      <a class="btn btn--primary btn--sm" href="#" data-wa><svg class="ic ic--fill"><use href="#i-wa"/></svg>Agendar pelo WhatsApp</a>
+    </nav>
+    <div class="header__cta">
+      <a class="btn btn--primary btn--sm" href="#" data-wa><svg class="ic ic--fill"><use href="#i-wa"/></svg>Agendar pelo WhatsApp</a>
+      <button class="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+        <svg class="ic ic--menu"><use href="#i-menu"/></svg>
+        <svg class="ic ic--x"><use href="#i-x"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow up">Enfermagem domiciliar · Grande Florianópolis</span> <!-- EDITE: região -->
+      <h1 class="up up-2">Cuidado de enfermagem <span class="accent">no conforto da sua casa.</span></h1>
+      <p class="lead up up-3">Curativos, medicação, pós-operatório e cuidados com idosos, feitos por uma enfermeira registrada no COREN. Sem deslocamento e sem fila: você marca pelo WhatsApp e eu vou até você.</p>
+      <div class="hero__actions up up-4">
+        <a class="btn btn--primary" href="#" data-wa><svg class="ic ic--fill"><use href="#i-wa"/></svg>Agendar pelo WhatsApp</a>
+        <a class="btn btn--ghost" href="#servicos">Ver serviços</a>
+      </div>
+      <ul class="proof up up-5">
+        <li><svg class="ic"><use href="#i-shield"/></svg>COREN-SC 123.456</li> <!-- EDITE -->
+        <li><svg class="ic"><use href="#i-heart"/></svg>+8 anos de experiência</li>
+        <li><svg class="ic"><use href="#i-clock"/></svg>Primeira visita em até 24h</li>
+      </ul>
+    </div>
+
+    <div class="hero__visual up up-6">
+      <div class="frame">
+        <!-- Troque pela foto: PNG sem fundo funciona melhor -->
+        <img class="photo" src="img/enfermeira.png" alt="Enfermeira Ana Ribeiro sorrindo, de jaleco, com estetoscópio"
+             onload="this.closest('.frame').classList.add('has-photo')" onerror="this.remove()">
+        <span class="ph-label"><svg class="ic"><use href="#i-camera"/></svg>Sua foto aqui · img/enfermeira.png</span>
+      </div>
+
+      <div class="float float--avail"><span class="dot"></span>Disponível hoje</div>
+      <div class="float float--rating"><svg class="ic ic--fill"><use href="#i-star"/></svg>4,9 <small>· 120 avaliações</small></div>
+      <div class="float float--plan" aria-label="Exemplo de plano de cuidados">
+        <header><h4>Plano de cuidados</h4><span>hoje</span></header>
+        <ul>
+          <li><span class="st"><svg class="ic"><use href="#i-check"/></svg></span><time>08:00</time>Curativo pós-cirúrgico</li>
+          <li><span class="st"><svg class="ic"><use href="#i-check"/></svg></span><time>12:00</time>Medicação e sinais vitais</li>
+          <li class="todo"><span class="st"><svg class="ic"><use href="#i-check"/></svg></span><time>18:00</time>Orientação à família</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NÚMEROS ============ -->
+<section class="section--tight">
+  <div class="container">
+    <div class="stats reveal">
+      <div class="stat"><strong>+8 anos</strong><span>de experiência hospitalar e domiciliar</span></div>
+      <div class="stat"><strong>+1.200</strong><span>atendimentos realizados em casa</span></div>
+      <div class="stat"><strong>4,9 <svg class="ic ic--fill"><use href="#i-star"/></svg></strong><span>avaliação média das famílias</span></div>
+      <div class="stat"><strong>24h</strong><span>para a primeira visita, em média</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVIÇOS ============ -->
+<section class="section" id="servicos">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">Serviços</span>
+      <h2>O que eu faço na sua casa</h2>
+      <p class="lead">Cada visita segue um plano de cuidados combinado com você e, quando houver, com o médico responsável.</p>
+    </div>
+    <div class="grid-3">
+      <article class="card reveal">
+        <div class="card__icon"><svg class="ic"><use href="#i-bandage"/></svg></div>
+        <h3>Curativos e pós-operatório</h3>
+        <p>Troca de curativos simples e complexos, retirada de pontos, cuidados com feridas e drenos e acompanhamento da cicatrização.</p>
+        <a class="link" href="#" data-wa="Olá, Ana! Gostaria de saber mais sobre curativos e pós-operatório em casa.">Falar sobre este serviço<svg class="ic"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="card reveal reveal-d1">
+        <div class="card__icon"><svg class="ic"><use href="#i-syringe"/></svg></div>
+        <h3>Medicação e injetáveis</h3>
+        <p>Aplicação de injeções, vacinas particulares e medicação venosa, além da organização da rotina de remédios da casa.</p>
+        <a class="link" href="#" data-wa="Olá, Ana! Gostaria de saber mais sobre aplicação de medicação e injetáveis em casa.">Falar sobre este serviço<svg class="ic"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="card reveal reveal-d2">
+        <div class="card__icon"><svg class="ic"><use href="#i-heart"/></svg></div>
+        <h3>Cuidados com idosos e acamados</h3>
+        <p>Higiene, prevenção de lesões por pressão, mobilização segura e acompanhamento diário ou por período.</p>
+        <a class="link" href="#" data-wa="Olá, Ana! Gostaria de saber mais sobre cuidados com idosos e acamados.">Falar sobre este serviço<svg class="ic"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="card reveal">
+        <div class="card__icon"><svg class="ic"><use href="#i-drops"/></svg></div>
+        <h3>Sondas, ostomias e cateteres</h3>
+        <p>Passagem e troca de sondas, cuidados com bolsa de ostomia e cateteres, sempre com orientação para a família.</p>
+        <a class="link" href="#" data-wa="Olá, Ana! Gostaria de saber mais sobre cuidados com sondas, ostomias e cateteres.">Falar sobre este serviço<svg class="ic"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="card reveal reveal-d1">
+        <div class="card__icon"><svg class="ic"><use href="#i-activity"/></svg></div>
+        <h3>Sinais vitais e exames em casa</h3>
+        <p>Aferição de pressão, glicemia e saturação, coleta de exames no domicílio e relatório resumido para o médico.</p>
+        <a class="link" href="#" data-wa="Olá, Ana! Gostaria de saber mais sobre aferição de sinais vitais e coleta de exames em casa.">Falar sobre este serviço<svg class="ic"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="card reveal reveal-d2">
+        <div class="card__icon"><svg class="ic"><use href="#i-users"/></svg></div>
+        <h3>Orientação a cuidadores</h3>
+        <p>Treino da família e de cuidadores para a rotina do dia a dia, com material simples e uma visita de acompanhamento.</p>
+        <a class="link" href="#" data-wa="Olá, Ana! Gostaria de saber mais sobre orientação para cuidadores e família.">Falar sobre este serviço<svg class="ic"><use href="#i-arrow"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section class="section section--tint" id="sobre">
+  <div class="container about">
+    <div class="about__visual reveal">
+      <div class="frame frame--sm">
+        <img class="photo" src="img/sobre.jpg" alt="Ana Ribeiro atendendo uma paciente em casa"
+             onload="this.closest('.frame').classList.add('has-photo')" onerror="this.remove()">
+        <span class="ph-label"><svg class="ic"><use href="#i-camera"/></svg>Sua foto aqui · img/sobre.jpg</span>
+      </div>
+      <div class="float float--coren"><svg class="ic"><use href="#i-shield"/></svg><span>COREN ativo<small>consulta pública disponível</small></span></div>
+    </div>
+    <div class="about__copy reveal reveal-d1">
+      <span class="eyebrow">Sobre mim</span>
+      <h2>Prazer, sou a Ana.</h2>
+      <!-- EDITE: sua história em 3 ou 4 frases -->
+      <p>Sou enfermeira formada pela UFSC, com 8 anos de hospital entre clínica cirúrgica e UTI. Desde 2021 me dedico ao atendimento domiciliar, porque foi em casa que vi as famílias mais tranquilas e os pacientes se recuperando melhor.</p>
+      <p>Atendo com calma, explico cada etapa e deixo a família segura para continuar o cuidado quando eu não estiver por perto.</p>
+      <div class="chips">
+        <span class="chip">COREN-SC 123.456</span>
+        <span class="chip chip--outline">Pós em Estomaterapia</span>
+        <span class="chip chip--outline">Feridas complexas</span>
+        <span class="chip chip--outline">Cuidados paliativos</span>
+      </div>
+      <h3 style="margin-bottom:14px">Como eu trabalho</h3>
+      <ul class="checklist">
+        <li><span class="st"><svg class="ic"><use href="#i-check"/></svg></span>Avaliação inicial na sua casa, sem obrigação de fechar pacote.</li>
+        <li><span class="st"><svg class="ic"><use href="#i-check"/></svg></span>Resumo curto no seu WhatsApp depois de cada visita.</li>
+        <li><span class="st"><svg class="ic"><use href="#i-check"/></svg></span>Contato direto com o médico da família, quando você autorizar.</li>
+        <li><span class="st"><svg class="ic"><use href="#i-check"/></svg></span>Recibo com número do COREN para pedir reembolso ao plano.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMO FUNCIONA ============ -->
+<section class="section" id="como-funciona">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">Como funciona</span>
+      <h2>Do primeiro contato à primeira visita</h2>
+      <p class="lead">Três passos, sem burocracia. Você não precisa saber o nome do procedimento — é só contar o que está acontecendo.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step__num">1</div>
+        <div class="step__body">
+          <h3>Você me chama no WhatsApp</h3>
+          <p>Conta o que está acontecendo e onde você mora. Em horário comercial, respondo em até 1 hora.</p>
+          <small><svg class="ic"><use href="#i-clock"/></svg>Leva 2 minutos</small>
+        </div>
+      </div>
+      <div class="step reveal reveal-d1">
+        <div class="step__num">2</div>
+        <div class="step__body">
+          <h3>Avaliação e plano de cuidados</h3>
+          <p>Na primeira visita avalio o paciente e combinamos frequência, horários e valores — tudo por escrito, antes de começar.</p>
+          <small><svg class="ic"><use href="#i-file"/></svg>Plano enviado no seu WhatsApp</small>
+        </div>
+      </div>
+      <div class="step reveal reveal-d2">
+        <div class="step__num">3</div>
+        <div class="step__body">
+          <h3>Visitas na sua casa</h3>
+          <p>Cumpro o plano, registro cada visita e ajusto o cuidado conforme a evolução, sempre avisando a família.</p>
+          <small><svg class="ic"><use href="#i-check"/></svg>Resumo após cada visita</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEPOIMENTOS ============ -->
+<section class="section section--tint" id="depoimentos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Depoimentos</span>
+      <h2>Quem já recebeu a Ana em casa</h2>
+      <p class="lead">Relatos de famílias atendidas na Grande Florianópolis. <!-- EDITE: troque pelos depoimentos reais --></p>
+    </div>
+    <div class="grid-3">
+      <article class="card quote reveal">
+        <span class="quote__mark" aria-hidden="true">“</span>
+        <div class="stars" aria-label="5 de 5 estrelas"><svg class="ic ic--fill"><use href="#i-star"/></svg><svg class="ic ic--fill"><use href="#i-star"/></svg><svg class="ic ic--fill"><use href="#i-star"/></svg><svg class="ic ic--fill"><use href="#i-star"/></svg><svg class="ic ic--fill"><use href="#i-star"/></svg></div>
+        <p>Meu pai teve alta com uma ferida grande na perna e a gente não sabia por onde começar. A Ana veio no dia seguinte, ensinou tudo e em três semanas a ferida estava fechada.</p>
+        <footer><span class="avatar">MT</span><div><b>Marcela T.</b><span>Filha de paciente · Campeche</span></div></footer>
+      </article>
+      <article class="card quote reveal reveal-d1">
+        <span class="quote__mark" aria-hidden="true">“</span>
+        <div class="stars" aria-label="5 de 5 estrelas"><svg class="ic ic--fill"><use href="#i-star"/></svg><svg class="ic ic--fill"><use href="#i-star"/></svg><svg class="ic ic--fill"><use href="#i-star"/></svg><svg class="ic ic--fill"><use href="#i-star"/></svg><svg class="ic ic--fill"><use href="#i-star"/></svg></div>
+        <p>Levar minha mãe todo dia ao posto para a injeção estava desgastando todo mundo. Agora a Ana vem no horário combinado e minha mãe até espera por ela na varanda.</p>
+        <footer><span class="avatar">RP</span><div><b>Rodrigo P.</b><span>Filho de paciente · Estreito</span></div></footer>
+      </article>
+      <article class="card quote reveal reveal-d2">
+        <span class="quote__mark" aria-hidden="true">“</span>
+        <div class="stars" aria-label="5 de 5 estrelas"><svg class="ic ic--fill"><use href="#i-star"/></svg><svg class="ic ic--fill"><use href="#i-star"/></svg><svg class="ic ic--fill"><use href="#i-star"/></svg><svg class="ic ic--fill"><use href="#i-star"/></svg><svg class="ic ic--fill"><use href="#i-star"/></svg></div>
+        <p>Profissional atenciosa e muito clara. Manda um resumo depois de cada visita, o que ajudou demais na conversa com o meu cardiologista.</p>
+        <footer><span class="avatar">LM</span><div><b>Dona Lúcia M.</b><span>Paciente, 82 anos · Coqueiros</span></div></footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DÚVIDAS ============ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">Dúvidas frequentes</span>
+      <h2>O que as famílias costumam perguntar</h2>
+    </div>
+    <div class="faq reveal">
+      <details>
+        <summary>Você atende plano de saúde?<svg class="ic"><use href="#i-plus"/></svg></summary>
+        <p>Atendo particular e emito recibo com meus dados e número do COREN, que você pode enviar ao seu plano para pedir reembolso. Muitas famílias recuperam parte do valor assim.</p>
+      </details>
+      <details>
+        <summary>Quais regiões você atende?<svg class="ic"><use href="#i-plus"/></svg></summary>
+        <p>Grande Florianópolis: Florianópolis, São José, Palhoça e Biguaçu. Para outras cidades, me chame no WhatsApp — avalio caso a caso, considerando o deslocamento.</p>
+      </details>
+      <details>
+        <summary>Atende à noite e nos fins de semana?<svg class="ic"><use href="#i-plus"/></svg></summary>
+        <p>Sim, com agendamento prévio. Plantões noturnos e fins de semana têm valor diferenciado, sempre combinado por escrito antes da visita.</p>
+      </details>
+      <details>
+        <summary>Preciso de pedido médico?<svg class="ic"><use href="#i-plus"/></svg></summary>
+        <p>Para curativos simples e aferição de sinais vitais, não. Para medicação injetável, sondas e alguns procedimentos, sim — e eu ajudo você a organizar isso com o médico responsável.</p>
+      </details>
+      <details>
+        <summary>Como é a cobrança?<svg class="ic"><use href="#i-plus"/></svg></summary>
+        <p>Por visita ou por período (meio período, diária ou plantão). Você recebe os valores por escrito antes de começar e não pago nada pela avaliação inicial na sua casa.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAMADA ============ -->
+<section class="section--tight">
+  <div class="container">
+    <div class="cta reveal">
+      <h2>Precisa de uma enfermeira hoje?</h2>
+      <p>Me chame no WhatsApp com o que está acontecendo. Em horário comercial, respondo em até 1 hora e já combinamos a primeira visita.</p>
+      <a class="btn btn--white" href="#" data-wa><svg class="ic ic--fill"><use href="#i-wa"/></svg>Falar com a Ana no WhatsApp</a>
+      <div class="note"><svg class="ic"><use href="#i-clock"/></svg>Segunda a sábado · Em emergências, ligue 192 (SAMU)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<section class="section" id="contato">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Contato</span>
+      <h2>Vamos combinar a primeira visita</h2>
+      <p class="lead">Preencha o que souber. A mensagem abre pronta no seu WhatsApp e você envia quando quiser.</p>
+    </div>
+    <div class="contact">
+      <form class="form reveal" id="form-contato" novalidate>
+        <h3>Conte o que você precisa</h3>
+        <p>Nenhum dado fica salvo neste site — tudo vai direto para o WhatsApp.</p>
+        <div class="form__row">
+          <div class="field"><label for="f-nome">Seu nome</label><input id="f-nome" name="nome" type="text" autocomplete="name" placeholder="Ex.: Marcela" required></div>
+          <div class="field"><label for="f-fone">Seu WhatsApp</label><input id="f-fone" name="fone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(48) 99999-9999"></div>
+        </div>
+        <div class="form__row">
+          <div class="field"><label for="f-local">Bairro / cidade</label><input id="f-local" name="local" type="text" placeholder="Ex.: Campeche, Florianópolis"></div>
+          <div class="field"><label for="f-serv">Do que você precisa?</label>
+            <select id="f-serv" name="servico">
+              <option value="">Escolha uma opção</option>
+              <option>Curativos e pós-operatório</option>
+              <option>Medicação e injetáveis</option>
+              <option>Cuidados com idosos e acamados</option>
+              <option>Sondas, ostomias e cateteres</option>
+              <option>Sinais vitais e exames em casa</option>
+              <option>Orientação a cuidadores</option>
+              <option>Ainda não sei — quero orientação</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="f-msg">Conte um pouco da situação</label><textarea id="f-msg" name="msg" placeholder="Ex.: minha mãe teve alta ontem e precisa trocar o curativo da cirurgia todos os dias..."></textarea></div>
+        <button class="btn btn--primary" type="submit"><svg class="ic ic--fill"><use href="#i-wa"/></svg>Enviar pelo WhatsApp</button>
+        <div class="form__hint">Ao enviar, o WhatsApp abre com a mensagem pronta para você revisar.</div>
+      </form>
+
+      <aside class="info reveal reveal-d1">
+        <h3>Outras formas de contato</h3>
+        <div class="info__item">
+          <div class="card__icon"><svg class="ic"><use href="#i-phone"/></svg></div>
+          <div><b>WhatsApp</b><a href="#" data-wa data-wa-display>(48) 99999-9999</a></div>
+        </div>
+        <div class="info__item">
+          <div class="card__icon"><svg class="ic"><use href="#i-mail"/></svg></div>
+          <div><b>E-mail</b><a href="mailto:contato@enfanaribeiro.com.br">contato@enfanaribeiro.com.br</a></div> <!-- EDITE -->
+        </div>
+        <div class="info__item">
+          <div class="card__icon"><svg class="ic"><use href="#i-clock"/></svg></div>
+          <div><b>Horários</b><span>Segunda a sexta, 7h às 20h · Sábado, 8h às 14h<br>Plantões noturnos sob agendamento</span></div>
+        </div>
+        <div class="info__item">
+          <div class="card__icon"><svg class="ic"><use href="#i-pin"/></svg></div>
+          <div><b>Área de atendimento</b><span>Florianópolis, São José, Palhoça e Biguaçu</span></div>
+        </div>
+        <div class="info__alert"><b>Emergência?</b> Este site não substitui atendimento médico de urgência. Ligue <b>192</b> (SAMU) ou vá ao pronto-socorro mais próximo.</div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ RODAPÉ ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="brand" href="#topo"><span class="brand__mark"><svg class="ic"><use href="#i-plus"/></svg></span><span>Enf. Ana Ribeiro<small>Enfermagem domiciliar</small></span></a>
+        <p>Cuidado de enfermagem em casa, com plano de cuidados por escrito e resumo após cada visita.</p>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#faq">Dúvidas frequentes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="#" data-wa data-wa-display>(48) 99999-9999</a></li>
+          <li><a href="mailto:contato@enfanaribeiro.com.br">contato@enfanaribeiro.com.br</a></li>
+          <li>Grande Florianópolis · SC</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="ano">2026</span> Enf. Ana Ribeiro · COREN-SC 123.456</span>
+      <span>Em emergências, ligue 192 (SAMU).</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-fab" href="#" data-wa aria-label="Conversar no WhatsApp"><svg class="ic ic--fill"><use href="#i-wa"/></svg><span class="badge" aria-hidden="true"></span></a>
+
+<script>
+/* ==================== CONFIGURAÇÃO — EDITE AQUI ==================== */
+const CONFIG = {
+  whatsapp: "5548999999999", // DDI + DDD + número, só dígitos
+  nome: "Ana",
+  mensagemPadrao: "Olá, Ana! Vi seu site e gostaria de agendar uma avaliação de enfermagem em casa."
+};
+/* =================================================================== */
+
+(function(){
+  // Links do WhatsApp
+  const base = "https://wa.me/" + CONFIG.whatsapp.replace(/\D/g,"") + "?text=";
+  document.querySelectorAll("[data-wa]").forEach(a => {
+    const msg = a.dataset.wa || CONFIG.mensagemPadrao;
+    a.href = base + encodeURIComponent(msg);
+    a.target = "_blank"; a.rel = "noopener";
+  });
+
+  // Número formatado nos textos
+  const d = CONFIG.whatsapp.replace(/\D/g,"").replace(/^55/,"");
+  if (d.length >= 10) {
+    const ddd = d.slice(0,2), num = d.slice(2);
+    const fmt = "(" + ddd + ") " + (num.length === 9 ? num.slice(0,5) + "-" + num.slice(5) : num.slice(0,4) + "-" + num.slice(4));
+    document.querySelectorAll("[data-wa-display]").forEach(el => el.textContent = fmt);
+  }
+
+  // Silhueta ilustrativa enquanto não há foto
+  const tpl = document.getElementById("tpl-silhouette");
+  document.querySelectorAll(".frame").forEach(f => f.prepend(tpl.content.cloneNode(true)));
+
+  // Cabeçalho com sombra ao rolar
+  const header = document.querySelector(".header");
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
+  onScroll(); window.addEventListener("scroll", onScroll, {passive:true});
+
+  // Menu mobile
+  const btn = document.querySelector(".menu-btn");
+  btn.addEventListener("click", () => {
+    const open = header.classList.toggle("nav-open");
+    btn.setAttribute("aria-expanded", open);
+    btn.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+  });
+  document.querySelectorAll(".nav a").forEach(a => a.addEventListener("click", () => {
+    header.classList.remove("nav-open"); btn.setAttribute("aria-expanded","false");
+  }));
+
+  // Revelar ao rolar
+  const els = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    }), {rootMargin:"0px 0px -8% 0px", threshold:.08});
+    els.forEach(el => io.observe(el));
+  } else { els.forEach(el => el.classList.add("in")); }
+
+  // Formulário → mensagem pronta no WhatsApp
+  const form = document.getElementById("form-contato");
+  form.addEventListener("submit", ev => {
+    ev.preventDefault();
+    const v = id => (document.getElementById(id).value || "").trim();
+    const nome = v("f-nome");
+    if (!nome) { document.getElementById("f-nome").focus(); return; }
+    const linhas = [
+      "Olá, " + CONFIG.nome + "! Vim pelo site.",
+      "Nome: " + nome,
+      v("f-fone") && "WhatsApp: " + v("f-fone"),
+      v("f-local") && "Bairro/cidade: " + v("f-local"),
+      v("f-serv") && "Preciso de: " + v("f-serv"),
+      v("f-msg") && "Situação: " + v("f-msg")
+    ].filter(Boolean);
+    window.open(base + encodeURIComponent(linhas.join("\n")), "_blank", "noopener");
+  });
+
+  document.getElementById("ano").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
