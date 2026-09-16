@@ -85,9 +85,9 @@ mariaclara027.github.io/
 | # | Seção | O que entrega |
 |:-:|-------|---------------|
 | 1 | **Hero** | Proposta de valor, dois CTAs e cartão flutuante com um "plano de cuidados" de exemplo |
-| 2 | **Números** | Formação (UNIVAG), UTI/urgência e emergência (ESTETUS) e experiência em paliativos |
+| 2 | **Números** | Formação (UNIVAG), UTI/urgência e emergência (ESTETUS), experiência em paliativos e 410h de cursos de atualização |
 | 3 | **Serviços** | 6 cards — cada um com link direto para o WhatsApp já com o assunto escrito |
-| 4 | **Sobre** | Trajetória profissional e o jeito de trabalhar |
+| 4 | **Sobre** | Trajetória profissional, formação complementar (6 cursos — FACIPAN, AVASUS/UFRN e IFF/Fiocruz) e o jeito de trabalhar |
 | 5 | **Como funciona** | Contato → avaliação e plano de cuidados → visitas |
 | 6 | **Dúvidas** | 5 perguntas em `<details>` — plano de saúde, região, horários, prescrição, cobrança |
 | 7 | **Contato** | Formulário + dados diretos + alerta de emergência |
