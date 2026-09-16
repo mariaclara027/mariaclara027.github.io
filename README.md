@@ -4,7 +4,7 @@
 
 # Enf. Maria Clara · Enfermagem Domiciliar
 
-**Cuidado de enfermagem no conforto da sua casa — Várzea Grande e Cuiabá / MT**
+**Cuidado de enfermagem no conforto da sua casa — Palhoça e Florianópolis / SC**
 
 Landing page de página única para captação de pacientes via WhatsApp.
 
@@ -25,7 +25,7 @@ Landing page de página única para captação de pacientes via WhatsApp.
 ## ✦ Sobre o projeto
 
 Site institucional da enfermeira **Maria Clara Alves de Oliveira**, que presta atendimento
-domiciliar em Várzea Grande e Cuiabá. O objetivo é simples e único: **transformar uma visita
+domiciliar em Palhoça e Florianópolis. O objetivo é simples e único: **transformar uma visita
 no site em uma conversa no WhatsApp**.
 
 Tudo cabe em um arquivo. Sem framework, sem `npm install`, sem etapa de build — é só abrir o
@@ -204,7 +204,7 @@ mensagem formatada e abre o WhatsApp.
 </td></tr>
 <tr><td><b>SEO</b></td><td>
 
-Canonical, meta geo (BR-MT), Open Graph e Twitter Card completos, `sitemap.xml` e
+Canonical, meta geo (BR-SC), Open Graph e Twitter Card completos, `sitemap.xml` e
 `robots.txt`. Dados estruturados JSON-LD com `MedicalBusiness` + `LocalBusiness`,
 `Person`, `WebSite`, `OfferCatalog` com os 6 serviços e `FAQPage` com as 5 perguntas —
 elegível para rich results no Google.
@@ -254,7 +254,7 @@ Em cerca de um minuto o site está no ar em **https://mariaclara027.github.io/**
 [![E-mail](https://img.shields.io/badge/E--mail-mariaclaraoliver027@gmail.com-14A39B?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mariaclaraoliver027@gmail.com)
 
 **Maria Clara Alves de Oliveira** · Enfermeira
-Atendimento domiciliar em Várzea Grande e Cuiabá — MT
+Atendimento domiciliar em Palhoça e Florianópolis — SC
 
 </div>
 
