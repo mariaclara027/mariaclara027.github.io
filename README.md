@@ -251,7 +251,7 @@ Em cerca de um minuto o site está no ar em **https://mariaclara027.github.io/**
 <div align="center">
 
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-(65)%2098105--4265-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/5565981054265)
-[![E-mail](https://img.shields.io/badge/E--mail-mariaclaraoliveira027@gmail.com-14A39B?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mariaclaraoliveira027@gmail.com)
+[![E-mail](https://img.shields.io/badge/E--mail-mariaclaraoliver027@gmail.com-14A39B?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mariaclaraoliver027@gmail.com)
 
 **Maria Clara Alves de Oliveira** · Enfermeira
 Atendimento domiciliar em Várzea Grande e Cuiabá — MT
